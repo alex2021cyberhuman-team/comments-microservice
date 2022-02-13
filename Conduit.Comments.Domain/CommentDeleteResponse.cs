@@ -1,6 +1,5 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public class CommentDeleteResponse : BaseResponse
 {
-    public class CommentDeleteResponse : BaseResponse
-    {
-    }
 }

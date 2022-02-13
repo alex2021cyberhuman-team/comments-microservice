@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Conduit.Comments.Domain
+namespace Conduit.Comments.Domain;
+
+public class MultipleCommentsOutputModel
 {
-    public class MultipleCommentsOutputModel
-    {
-        [Required]
-        public List<CommentOutputModel> Comments { get; set; } = new();
-    }
-
-
+    [Required]
+    public List<CommentOutputModel> Comments { get; set; } = new();
 }

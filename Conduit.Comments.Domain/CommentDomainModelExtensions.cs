@@ -1,21 +1,31 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public static class CommentDomainModelExtensions
 {
-    public static class CommentDomainModelExtensions
+    public static CommentOutputModel ToOutput(
+        this CommentDomainModel commentDomainModel,
+        bool following = false)
     {
-        public static CommentOutputModel ToOutput(this CommentDomainModel commentDomainModel, bool following = false) => new()
+        return new()
         {
             CreatedAt = commentDomainModel.CreatedAt,
             UpdatedAt = commentDomainModel.UpdatedAt,
             Body = commentDomainModel.Body,
-            Author = {
+            Author =
+            {
                 Username = commentDomainModel.Author.Username,
                 Bio = commentDomainModel.Author.Biography,
                 Image = commentDomainModel.Author.Image,
                 Following = following
             }
         };
+    }
 
-        public static CommentDomainModel FromCreateInput(this CommentCreateInputModel createCommentInputModel, Guid authorId) => new()
+    public static CommentDomainModel FromCreateInput(
+        this CommentCreateInputModel createCommentInputModel,
+        Guid authorId)
+    {
+        return new()
         {
             Id = Guid.NewGuid(),
             CreatedAt = DateTime.UtcNow,
@@ -24,6 +34,4 @@
             AuthorId = authorId
         };
     }
-
-
 }

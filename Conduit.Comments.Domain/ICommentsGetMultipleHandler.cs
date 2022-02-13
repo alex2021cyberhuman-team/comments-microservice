@@ -1,7 +1,7 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public interface ICommentsGetMultipleHandler
 {
-    public interface ICommentsGetMultipleHandler
-    {
-        Task<CommentsGetMultipleResponse> HandleAsync(CommentsGetMultipleRequest request);
-    }
+    Task<CommentsGetMultipleResponse> HandleAsync(
+        CommentsGetMultipleRequest request);
 }

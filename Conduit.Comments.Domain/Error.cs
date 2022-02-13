@@ -1,10 +1,9 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public enum Error
 {
-    public enum Error
-    {
-        None,
-        BadRequest,
-        NotFound,
-        Forbidden
-    }
+    None,
+    BadRequest,
+    NotFound,
+    Forbidden
 }

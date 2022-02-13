@@ -1,7 +1,6 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public class CommentGetSingleResponse : BaseResponse
 {
-    public class CommentGetSingleResponse : BaseResponse
-    {
-        public SingleCommentOutputModel Output { get; set; } = new();
-    }
+    public SingleCommentOutputModel Output { get; set; } = new();
 }

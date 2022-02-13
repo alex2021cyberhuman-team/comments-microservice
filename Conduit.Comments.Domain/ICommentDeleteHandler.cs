@@ -1,7 +1,7 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public interface ICommentDeleteHandler
 {
-    public interface ICommentDeleteHandler
-    {
-        Task<CommentDeleteResponse> HandleAsync(CommentDeleteRequest request);
-    }
+    Task<CommentDeleteResponse> HandleAsync(
+        CommentDeleteRequest request);
 }

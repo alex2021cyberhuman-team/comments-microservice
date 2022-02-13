@@ -1,7 +1,7 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public interface ICommentGetSingleHandler
 {
-    public interface ICommentGetSingleHandler
-    {
-        Task<CommentGetSingleResponse> HandleAsync(CommentGetSingleRequest request);
-    }
+    Task<CommentGetSingleResponse> HandleAsync(
+        CommentGetSingleRequest request);
 }

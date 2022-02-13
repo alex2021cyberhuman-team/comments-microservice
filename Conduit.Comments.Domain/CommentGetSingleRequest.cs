@@ -1,11 +1,10 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public class CommentGetSingleRequest
 {
-    public class CommentGetSingleRequest
-    {
-        public Guid? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
-        public string ArticleSlug { get; set; } = string.Empty;
+    public string ArticleSlug { get; set; } = string.Empty;
 
-        public Guid CommentId { get; set; }
-    }
+    public Guid CommentId { get; set; }
 }

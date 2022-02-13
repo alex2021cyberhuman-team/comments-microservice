@@ -1,9 +1,8 @@
-﻿namespace Conduit.Comments.Domain
-{
-    public abstract class BaseResponse
-    {
-        public Error Error { get; set; }
+﻿namespace Conduit.Comments.Domain;
 
-        public bool IsSuccess => Error.None == Error;
-    }
+public abstract class BaseResponse
+{
+    public Error Error { get; set; }
+
+    public bool IsSuccess => Error.None == Error;
 }

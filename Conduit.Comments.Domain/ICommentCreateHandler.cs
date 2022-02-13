@@ -1,7 +1,7 @@
-﻿namespace Conduit.Comments.Domain
+﻿namespace Conduit.Comments.Domain;
+
+public interface ICommentCreateHandler
 {
-    public interface ICommentCreateHandler
-    {
-        Task<CommentCreateResponse> HandleAsync(CommentCreateRequest request);
-    }
+    Task<CommentCreateResponse> HandleAsync(
+        CommentCreateRequest request);
 }
