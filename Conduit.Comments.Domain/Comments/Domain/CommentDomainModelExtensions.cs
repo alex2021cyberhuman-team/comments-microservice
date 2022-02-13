@@ -1,4 +1,6 @@
-﻿namespace Conduit.Comments.Domain;
+﻿using Conduit.Comments.Domain.Comments.Create;
+
+namespace Conduit.Comments.Domain.Comments.Domain;
 
 public static class CommentDomainModelExtensions
 {

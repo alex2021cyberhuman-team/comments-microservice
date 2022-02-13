@@ -1,4 +1,6 @@
-﻿namespace Conduit.Comments.Domain;
+﻿using Conduit.Comments.Domain.Comments.Queries.Single;
+
+namespace Conduit.Comments.Domain.Comments.Create;
 
 public class CommentCreateResponse : BaseResponse
 {

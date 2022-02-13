@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Conduit.Comments.Domain;
+namespace Conduit.Comments.Domain.Comments.Create;
 
 public class CommentCreateInputModel
 {

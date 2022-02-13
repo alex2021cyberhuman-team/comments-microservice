@@ -1,4 +1,5 @@
 ﻿using Conduit.Comments.Domain;
+using Conduit.Comments.Domain.Comments.Domain;
 
 namespace Conduit.Comments.BusinessLogic.Comments.Repositories;
 

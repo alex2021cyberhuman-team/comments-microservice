@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain;
+﻿namespace Conduit.Comments.Domain.Authors;
 
 public class AuthorDomainModel
 {
