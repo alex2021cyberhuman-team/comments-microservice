@@ -11,12 +11,12 @@ public class
     public void Configure(
         EntityTypeBuilder<CommentDbModel> builder)
     {
-        builder.HasIndex(x => x.Created);
+        builder.HasIndex(x => x.CreatedAt);
         builder.Property(x => x.Id).HasColumnName("comment_id");
-        builder.Property(x => x.Created).HasValueGenerator((
+        builder.Property(x => x.CreatedAt).HasValueGenerator((
             _,
             _) => DateTimeGenerator.Instance);
-        builder.Property(x => x.Updated).HasValueGenerator((
+        builder.Property(x => x.UpdatedAt).HasValueGenerator((
             _,
             _) => DateTimeGenerator.Instance);
     }

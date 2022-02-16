@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Conduit.Comments.Domain\Conduit.Comments.Domain.csproj" />
+    <ProjectReference Include="..\Conduit.Comments.Domain\Conduit.Comments.Domain.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Comments" />
+    <Folder Include="Comments"/>
   </ItemGroup>
 
 </Project>

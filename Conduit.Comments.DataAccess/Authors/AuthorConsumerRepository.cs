@@ -54,14 +54,18 @@ public class AuthorConsumerRepository : IAuthorConsumerRepository
             .FirstAsync(x => x.Id == eventModel.FollowedId);
 
         if (followedAuthorDbModel.Followers.Any())
+        {
             throw new InvalidOperationException("Followers already added");
+        }
 
         var followerAuthorDbModel = await _context.Author
             .Include(x => x.Followeds.Where(y => y.Id == eventModel.FollowedId))
             .FirstAsync(x => x.Id == eventModel.FollowerId);
 
         if (followerAuthorDbModel.Followeds.Any())
+        {
             throw new InvalidOperationException("Followeds already added");
+        }
 
         followedAuthorDbModel.Followers.Add(followerAuthorDbModel);
         followerAuthorDbModel.Followeds.Add(followedAuthorDbModel);
@@ -79,7 +83,9 @@ public class AuthorConsumerRepository : IAuthorConsumerRepository
             .FirstAsync(x => x.Id == eventModel.FollowedId);
 
         if (followedAuthorDbModel.Followers.Any() == false)
+        {
             throw new InvalidOperationException("Followers not yet added");
+        }
 
         followedAuthorDbModel.Followers.Remove(followedAuthorDbModel.Followers
             .First());

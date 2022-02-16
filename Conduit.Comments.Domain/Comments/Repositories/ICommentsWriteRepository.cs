@@ -4,10 +4,9 @@ namespace Conduit.Comments.Domain.Comments.Repositories;
 
 public interface ICommentsWriteRepository
 {
-    Task<CommentDomainModel> CreateAsync(
+    Task CreateAsync(
         CommentDomainModel commentDomainModel);
 
-
-    Task<CommentDomainModel?> DeleteAsync(
-        string articleSlug);
+    Task DeleteAsync(
+        Guid commentId);
 }

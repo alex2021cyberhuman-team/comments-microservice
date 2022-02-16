@@ -7,8 +7,7 @@ namespace Conduit.Comments.BusinessLogic.Authors;
 public class
     CreateFollowingEventConsumer : IEventConsumer<CreateFollowingEventModel>
 {
-    private readonly IAuthorConsumerRepository 
-        _repository;
+    private readonly IAuthorConsumerRepository _repository;
 
     public CreateFollowingEventConsumer(
         IAuthorConsumerRepository repository)

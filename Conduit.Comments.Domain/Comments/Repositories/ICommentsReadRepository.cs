@@ -4,14 +4,12 @@ namespace Conduit.Comments.Domain.Comments.Repositories;
 
 public interface ICommentsReadRepository
 {
-    Task<CommentOutputModel> GetSingleAsync(
-        string articleSlug,
+    Task<CommentDomainModel?> FindAsync(
         Guid commentId,
-        Guid userId,
         CancellationToken cancellationToken);
 
-    Task<IEnumerable<CommentOutputModel>> GetMultipleAsync(
+    Task<IList<CommentOutputModel>> GetMultipleAsync(
         string articleSlug,
-        Guid userId,
+        Guid? userId,
         CancellationToken cancellationToken);
 }
