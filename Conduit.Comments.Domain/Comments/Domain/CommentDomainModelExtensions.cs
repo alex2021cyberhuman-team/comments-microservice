@@ -4,7 +4,7 @@ namespace Conduit.Comments.Domain.Comments.Domain;
 
 public static class CommentDomainModelExtensions
 {
-    public static CommentOutputModel ToOutput(
+    public static CommentOutputModel ToCommentOutputModel(
         this CommentDomainModel commentDomainModel,
         bool following = false)
     {
@@ -23,7 +23,7 @@ public static class CommentDomainModelExtensions
         };
     }
 
-    public static CommentDomainModel FromCreateInput(
+    public static CommentDomainModel ToCommentDomainModel(
         this CommentCreateInputModel createCommentInputModel,
         Guid authorId)
     {

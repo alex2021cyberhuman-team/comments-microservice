@@ -3,5 +3,6 @@
 public interface ICommentCreateHandler
 {
     Task<CommentCreateResponse> HandleAsync(
-        CommentCreateRequest request);
+        CommentCreateRequest request,
+        CancellationToken cancellationToken);
 }
