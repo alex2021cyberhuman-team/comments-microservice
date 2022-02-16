@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Conduit.Comments.DataAccess.Articles;
 
-public class ArticleConsumerRepository
+public class ArticleConsumerRepository : IArticleConsumerRepository
 {
     private readonly CommentsContext _context;
 
@@ -38,7 +38,7 @@ public class ArticleConsumerRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(
+    public async Task RemoveAsync(
         DeleteArticleEventModel eventModel)
     {
         var dbModel =
