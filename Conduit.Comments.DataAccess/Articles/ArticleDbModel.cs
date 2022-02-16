@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
+﻿using Conduit.Comments.DataAccess.Authors;
 
-namespace Conduit.Comments.DataAccess.Models;
+namespace Conduit.Comments.DataAccess.Articles;
 
 public class ArticleDbModel
 {

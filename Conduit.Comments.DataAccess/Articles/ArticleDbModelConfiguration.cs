@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Conduit.Comments.DataAccess.Models;
+namespace Conduit.Comments.DataAccess.Articles;
 
 public class
     ArticleDbModelConfiguration : IEntityTypeConfiguration<ArticleDbModel>

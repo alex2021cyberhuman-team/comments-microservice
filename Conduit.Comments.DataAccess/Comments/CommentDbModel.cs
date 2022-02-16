@@ -1,6 +1,9 @@
-﻿namespace Conduit.Comments.DataAccess.Models;
+﻿using Conduit.Comments.DataAccess.Articles;
+using Conduit.Comments.DataAccess.Authors;
 
-public class CommentsDbModel
+namespace Conduit.Comments.DataAccess.Comments;
+
+public class CommentDbModel
 {
     public Guid Id { get; set; }
 
@@ -11,7 +14,7 @@ public class CommentsDbModel
     public Guid AuthorId { get; set; }
 
     public AuthorDbModel Author { get; set; } = null!;
-    
+
     public string Body { get; set; } = string.Empty;
 
     public DateTime Created { get; set; }

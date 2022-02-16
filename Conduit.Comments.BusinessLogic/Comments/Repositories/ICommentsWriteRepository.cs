@@ -7,8 +7,8 @@ public interface ICommentsWriteRepository
 {
     Task<CommentDomainModel> CreateAsync(
         CommentDomainModel commentDomainModel);
-    
-    
+
+
     Task<CommentDomainModel?> DeleteAsync(
         string articleSlug);
 }
