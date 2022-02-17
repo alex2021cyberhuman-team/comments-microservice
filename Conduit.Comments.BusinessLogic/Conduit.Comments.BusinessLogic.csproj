@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Conduit.Comments.Domain\Conduit.Comments.Domain.csproj"/>
+    <ProjectReference Include="..\Conduit.Comments.Domain\Conduit.Comments.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.3.6"/>
+    <PackageReference Include="FluentValidation" Version="10.3.6" />
   </ItemGroup>
 
 </Project>

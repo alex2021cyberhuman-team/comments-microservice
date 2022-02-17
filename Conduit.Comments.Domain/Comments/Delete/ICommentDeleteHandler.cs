@@ -3,5 +3,6 @@
 public interface ICommentDeleteHandler
 {
     Task<CommentDeleteResponse> HandleAsync(
-        CommentDeleteRequest request);
+        CommentDeleteRequest request,
+        CancellationToken cancellationToken);
 }

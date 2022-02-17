@@ -8,18 +8,18 @@ namespace Conduit.Comments.BusinessLogic.Comments.Create;
 
 public class CommentCreateHandler : ICommentCreateHandler
 {
-    private readonly ICommentsWriteRepository _repository;
-    private readonly ICommentCreateInputModelValidator _validator;
-    private readonly IArticleReadRepository _articleRepository;
+    private readonly ICommentsWriteRepository _commentsWriteRepository;
+    private readonly ICommentCreateInputModelValidator _commentCreateInputModelValidator;
+    private readonly IArticleReadRepository _articleReadRepository;
     
     public CommentCreateHandler(
-        ICommentsWriteRepository repository,
-        ICommentCreateInputModelValidator validator,
-        IArticleReadRepository articleRepository)
+        ICommentsWriteRepository commentsWriteRepository,
+        ICommentCreateInputModelValidator commentCreateInputModelValidator,
+        IArticleReadRepository articleReadRepository)
     {
-        _repository = repository;
-        _validator = validator;
-        _articleRepository = articleRepository;
+        _commentsWriteRepository = commentsWriteRepository;
+        _commentCreateInputModelValidator = commentCreateInputModelValidator;
+        _articleReadRepository = articleReadRepository;
     }
 
     public async Task<CommentCreateResponse> HandleAsync(
@@ -27,14 +27,13 @@ public class CommentCreateHandler : ICommentCreateHandler
         CancellationToken cancellationToken)
     {
         var isArticleExists = await 
-            _articleRepository.Exists(request.ArticleSlug, cancellationToken);
+            _articleReadRepository.Exists(request.ArticleSlug, cancellationToken);
         if (isArticleExists == false)
         {
             return new(Error.NotFound);
         }
-        
-        
-        var validation = await _validator.ValidateAsync(request.Model);
+
+        var validation = await _commentCreateInputModelValidator.ValidateAsync(request.Model);
         if (validation == false)
         {
             return new(validation);
@@ -42,7 +41,7 @@ public class CommentCreateHandler : ICommentCreateHandler
 
         var domainModel = request.Model.ToCommentDomainModel(request.AuthorId);
 
-        await _repository.CreateAsync(domainModel);
+        await _commentsWriteRepository.CreateAsync(domainModel);
 
         return new(domainModel.ToCommentOutputModel());
     }
