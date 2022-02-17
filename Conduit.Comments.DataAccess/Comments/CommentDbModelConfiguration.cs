@@ -19,6 +19,10 @@ public class
         builder.Property(x => x.UpdatedAt).HasValueGenerator((
             _,
             _) => DateTimeGenerator.Instance);
+
+        builder.Navigation(x => x.Article).AutoInclude();
+        builder.Navigation(x => x.Author).AutoInclude();
+        
     }
 
     public class DateTimeGenerator : ValueGenerator<DateTime>

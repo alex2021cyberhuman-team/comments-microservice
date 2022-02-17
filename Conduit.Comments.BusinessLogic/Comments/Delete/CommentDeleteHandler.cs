@@ -3,6 +3,9 @@ using Conduit.Comments.Domain.Articles;
 using Conduit.Comments.Domain.Comments.Delete;
 using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Comments.Domain.Comments.Repositories;
+using Conduit.Shared.Events.Models.Comments.CreateComment;
+using Conduit.Shared.Events.Models.Comments.DeleteComment;
+using Conduit.Shared.Events.Services;
 
 namespace Conduit.Comments.BusinessLogic.Comments.Delete;
 
@@ -11,25 +14,29 @@ public class CommentDeleteHandler : ICommentDeleteHandler
     private readonly IArticleReadRepository _articleReadRepository;
     private readonly ICommentsWriteRepository _commentsWriteRepository;
     private readonly ICommentsReadRepository _commentsReadRepository;
+    private readonly IEventProducer<DeleteCommentEventModel>
+        _deleteCommentEventModelEventProducer;
 
     public CommentDeleteHandler(
         IArticleReadRepository articleReadRepository,
         ICommentsWriteRepository commentsWriteRepository,
-        ICommentsReadRepository commentsReadRepository)
+        ICommentsReadRepository commentsReadRepository,
+        IEventProducer<DeleteCommentEventModel> deleteCommentEventModelEventProducer)
     {
         _articleReadRepository = articleReadRepository;
         _commentsWriteRepository = commentsWriteRepository;
         _commentsReadRepository = commentsReadRepository;
+        _deleteCommentEventModelEventProducer = deleteCommentEventModelEventProducer;
     }
 
     public async Task<CommentDeleteResponse> HandleAsync(
         CommentDeleteRequest request,
         CancellationToken cancellationToken)
     {
-        var isArticleExists =
-            await _articleReadRepository.Exists(request.ArticleSlug,
+        var articleDomainModel =
+            await _articleReadRepository.FindAsync(request.ArticleSlug,
                 cancellationToken);
-        if (isArticleExists == false)
+        if (articleDomainModel is null)
         {
             return new(Error.NotFound);
         }
@@ -49,11 +56,20 @@ public class CommentDeleteHandler : ICommentDeleteHandler
         }
 
         await _commentsWriteRepository.DeleteAsync(request.CommentId);
+        var deleteCommentEventModel = new DeleteCommentEventModel
+        {
+            Id = comment.Id,
+            ArticleId = comment.ArticleId,
+            UserId = request.AuthorId
+        };
 
+        await _deleteCommentEventModelEventProducer.ProduceEventAsync(
+            deleteCommentEventModel);
+        
         return new();
     }
 
-    private bool CheckCanUserDeleteComment(
+    private static bool CheckCanUserDeleteComment(
         CommentDomainModel comment,
         CommentDeleteRequest request)
     {

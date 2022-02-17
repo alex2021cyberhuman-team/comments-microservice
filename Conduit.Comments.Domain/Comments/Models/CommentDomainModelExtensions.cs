@@ -25,7 +25,9 @@ public static class CommentDomainModelExtensions
 
     public static CommentDomainModel ToCommentDomainModel(
         this CommentCreateInputModel createCommentInputModel,
-        Guid authorId)
+        Guid authorId,
+        Guid articleId,
+        string articleSlug)
     {
         return new()
         {
@@ -33,7 +35,9 @@ public static class CommentDomainModelExtensions
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
             Body = createCommentInputModel.Comment.Body,
-            AuthorId = authorId
+            AuthorId = authorId,
+            ArticleId = articleId,
+            ArticleSlug = articleSlug
         };
     }
 }

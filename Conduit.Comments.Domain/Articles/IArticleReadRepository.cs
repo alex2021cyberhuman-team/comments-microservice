@@ -2,7 +2,7 @@
 
 public interface IArticleReadRepository
 {
-    Task<bool> Exists(
+    Task<ArticleDomainModel?> FindAsync(
         string articleSlug,
         CancellationToken cancellationToken);
 }
