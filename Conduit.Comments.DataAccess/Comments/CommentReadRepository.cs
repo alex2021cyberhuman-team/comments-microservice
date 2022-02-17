@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Domain;
+﻿using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Comments.Domain.Comments.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +24,7 @@ public class CommentReadRepository : ICommentsReadRepository
         return dbModel?.ToCommentDomainModel();
     }
 
-    public async Task<IList<CommentOutputModel>> GetMultipleAsync(
+    public async Task<List<CommentOutputModel>> GetMultipleAsync(
         string articleSlug,
         Guid? userId,
         CancellationToken cancellationToken)

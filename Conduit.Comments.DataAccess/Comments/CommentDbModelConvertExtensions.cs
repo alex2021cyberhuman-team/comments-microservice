@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Conduit.Comments.DataAccess.Authors;
-using Conduit.Comments.Domain.Comments.Domain;
+using Conduit.Comments.Domain.Comments.Models;
 
 namespace Conduit.Comments.DataAccess.Comments;
 

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Conduit.Comments.Domain.Authors;
 
-namespace Conduit.Comments.Domain.Comments.Domain;
+namespace Conduit.Comments.Domain.Comments.Models;
 
 public class CommentOutputModel
 {

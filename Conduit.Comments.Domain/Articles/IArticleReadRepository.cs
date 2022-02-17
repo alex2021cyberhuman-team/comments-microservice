@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.DataAccess.Articles;
+﻿namespace Conduit.Comments.Domain.Articles;
 
 public interface IArticleReadRepository
 {

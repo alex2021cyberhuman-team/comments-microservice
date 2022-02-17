@@ -2,7 +2,7 @@
 using Conduit.Shared.Events.Models.Articles.DeleteArticle;
 using Conduit.Shared.Events.Models.Articles.UpdateArticle;
 
-namespace Conduit.Comments.DataAccess.Articles;
+namespace Conduit.Comments.Domain.Articles;
 
 public interface IArticleConsumerRepository
 {

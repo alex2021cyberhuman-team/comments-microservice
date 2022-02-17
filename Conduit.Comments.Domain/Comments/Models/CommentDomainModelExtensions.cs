@@ -1,6 +1,6 @@
 ﻿using Conduit.Comments.Domain.Comments.Create;
 
-namespace Conduit.Comments.Domain.Comments.Domain;
+namespace Conduit.Comments.Domain.Comments.Models;
 
 public static class CommentDomainModelExtensions
 {

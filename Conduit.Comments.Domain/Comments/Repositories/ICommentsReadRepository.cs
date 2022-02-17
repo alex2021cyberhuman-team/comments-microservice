@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Domain;
+﻿using Conduit.Comments.Domain.Comments.Models;
 
 namespace Conduit.Comments.Domain.Comments.Repositories;
 
@@ -8,7 +8,7 @@ public interface ICommentsReadRepository
         Guid commentId,
         CancellationToken cancellationToken);
 
-    Task<IList<CommentOutputModel>> GetMultipleAsync(
+    Task<List<CommentOutputModel>> GetMultipleAsync(
         string articleSlug,
         Guid? userId,
         CancellationToken cancellationToken);

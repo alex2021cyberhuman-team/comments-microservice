@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Conduit.Comments.Domain.Comments.Domain;
+using Conduit.Comments.Domain.Comments.Models;
 
-namespace Conduit.Comments.Domain.Comments.Queries.Multiple;
+namespace Conduit.Comments.Domain.Comments.GetMultiple;
 
 public class MultipleCommentsOutputModel
 {

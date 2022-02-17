@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Domain;
+﻿using Conduit.Comments.Domain.Comments.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Conduit.Comments.DataAccess.Comments;

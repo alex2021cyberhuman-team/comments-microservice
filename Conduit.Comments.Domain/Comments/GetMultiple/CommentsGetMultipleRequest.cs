@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain.Comments.Queries.Multiple;
+﻿namespace Conduit.Comments.Domain.Comments.GetMultiple;
 
 public class CommentsGetMultipleRequest
 {

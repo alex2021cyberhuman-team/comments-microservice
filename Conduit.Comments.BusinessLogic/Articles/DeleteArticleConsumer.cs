@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.DataAccess.Articles;
+﻿using Conduit.Comments.Domain.Articles;
 using Conduit.Shared.Events.Models.Articles.DeleteArticle;
 using Conduit.Shared.Events.Services;
 

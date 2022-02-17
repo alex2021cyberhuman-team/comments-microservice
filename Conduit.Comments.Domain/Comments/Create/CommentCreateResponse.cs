@@ -1,5 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Domain;
-using Conduit.Comments.Domain.Comments.Queries.Single;
+﻿using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Shared.Validation;
 
 namespace Conduit.Comments.Domain.Comments.Create;
@@ -28,7 +27,7 @@ public class CommentCreateResponse : BaseResponse
     public CommentCreateResponse(
         CommentOutputModel comment)
     {
-        Output = new SingleCommentOutputModel() { Comment = comment };
+        Output = new() { Comment = comment };
     }
 
     public SingleCommentOutputModel Output { get; set; } = new();
