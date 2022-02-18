@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Conduit.Comments.Domain.Comments.Create;
+﻿using Conduit.Comments.Domain.Comments.Create;
 using Conduit.Shared.Validation;
 using FluentValidation;
 

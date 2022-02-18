@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Conduit.Comments.DataAccess.Articles;
-using Conduit.Comments.DataAccess.Authors;
 using Conduit.Comments.DataAccess.Comments;
+using Conduit.Comments.DataAccess.Authors;
 using Microsoft.EntityFrameworkCore;
 
 namespace Conduit.Comments.DataAccess;

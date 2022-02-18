@@ -4,7 +4,6 @@ using Conduit.Comments.Domain.Comments.Create;
 using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Comments.Domain.Comments.Repositories;
 using Conduit.Shared.Events.Models.Comments.CreateComment;
-using Conduit.Shared.Events.Models.Comments.DeleteComment;
 using Conduit.Shared.Events.Services;
 using Microsoft.Extensions.Logging;
 
