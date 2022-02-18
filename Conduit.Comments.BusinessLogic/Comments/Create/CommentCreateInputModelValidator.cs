@@ -18,8 +18,6 @@ public class CommentCreateInputModelValidator :
         CommentCreateInputModel commentCreateInputModel)
     {
         var results = await ValidateAsync(commentCreateInputModel);
-        return new(results.Errors.Select(x =>
-            new ValidationResult(x.ErrorMessage,
-                new string[] { x.PropertyName })).ToList());
+        return results.ToValidation();
     }
 }

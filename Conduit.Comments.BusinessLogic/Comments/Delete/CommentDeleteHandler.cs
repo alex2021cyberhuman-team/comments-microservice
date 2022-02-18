@@ -46,7 +46,7 @@ public class CommentDeleteHandler : ICommentDeleteHandler
                 cancellationToken);
         if (articleDomainModel is null)
         {
-            _logger.LogTrace(
+            _logger.LogWarning(
                 "Cannot create comment article not found {Request}", request);
             return new(Error.NotFound);
         }
@@ -56,7 +56,7 @@ public class CommentDeleteHandler : ICommentDeleteHandler
                 cancellationToken);
         if (comment is null)
         {
-            _logger.LogTrace("Cannot delete comment not found {Request}",
+            _logger.LogWarning("Cannot delete comment not found {Request}",
                 request);
             return new(Error.NotFound);
         }
@@ -64,7 +64,7 @@ public class CommentDeleteHandler : ICommentDeleteHandler
         var canUserDeleteComment = CheckCanUserDeleteComment(comment, request);
         if (canUserDeleteComment == false)
         {
-            _logger.LogTrace("Cannot delete comment forbidden {Request}",
+            _logger.LogWarning("Cannot delete comment forbidden {Request}",
                 request);
             return new(Error.Forbidden);
         }

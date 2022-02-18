@@ -1,7 +1,7 @@
 ﻿param(
   [String]$Config = 'DEBUG',
   [String]$RuntimeIdentifier = 'linux-x64',
-  [String]$Tag = 'likes:prebuild',
+  [String]$Tag = 'comments:prebuild',
   [String]$PathToRepository = './'
 )
 $Publish = "$( $PathToRepository )app/publish/"
