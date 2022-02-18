@@ -6,6 +6,7 @@ using Conduit.Comments.Domain.Comments.Repositories;
 using Conduit.Shared.Events.Models.Comments.CreateComment;
 using Conduit.Shared.Events.Models.Comments.DeleteComment;
 using Conduit.Shared.Events.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Conduit.Comments.BusinessLogic.Comments.Delete;
 
@@ -14,19 +15,26 @@ public class CommentDeleteHandler : ICommentDeleteHandler
     private readonly IArticleReadRepository _articleReadRepository;
     private readonly ICommentsWriteRepository _commentsWriteRepository;
     private readonly ICommentsReadRepository _commentsReadRepository;
+
     private readonly IEventProducer<DeleteCommentEventModel>
         _deleteCommentEventModelEventProducer;
+
+    private readonly ILogger<CommentDeleteHandler> _logger;
 
     public CommentDeleteHandler(
         IArticleReadRepository articleReadRepository,
         ICommentsWriteRepository commentsWriteRepository,
         ICommentsReadRepository commentsReadRepository,
-        IEventProducer<DeleteCommentEventModel> deleteCommentEventModelEventProducer)
+        IEventProducer<DeleteCommentEventModel>
+            deleteCommentEventModelEventProducer,
+        ILogger<CommentDeleteHandler> logger)
     {
         _articleReadRepository = articleReadRepository;
         _commentsWriteRepository = commentsWriteRepository;
         _commentsReadRepository = commentsReadRepository;
-        _deleteCommentEventModelEventProducer = deleteCommentEventModelEventProducer;
+        _deleteCommentEventModelEventProducer =
+            deleteCommentEventModelEventProducer;
+        _logger = logger;
     }
 
     public async Task<CommentDeleteResponse> HandleAsync(
@@ -38,6 +46,8 @@ public class CommentDeleteHandler : ICommentDeleteHandler
                 cancellationToken);
         if (articleDomainModel is null)
         {
+            _logger.LogTrace(
+                "Cannot create comment article not found {Request}", request);
             return new(Error.NotFound);
         }
 
@@ -46,12 +56,16 @@ public class CommentDeleteHandler : ICommentDeleteHandler
                 cancellationToken);
         if (comment is null)
         {
+            _logger.LogTrace("Cannot delete comment not found {Request}",
+                request);
             return new(Error.NotFound);
         }
 
         var canUserDeleteComment = CheckCanUserDeleteComment(comment, request);
         if (canUserDeleteComment == false)
         {
+            _logger.LogTrace("Cannot delete comment forbidden {Request}",
+                request);
             return new(Error.Forbidden);
         }
 
@@ -65,7 +79,8 @@ public class CommentDeleteHandler : ICommentDeleteHandler
 
         await _deleteCommentEventModelEventProducer.ProduceEventAsync(
             deleteCommentEventModel);
-        
+        _logger.LogInformation("Comment deleted {Request}", request);
+
         return new();
     }
 

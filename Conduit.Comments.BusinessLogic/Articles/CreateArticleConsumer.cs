@@ -9,7 +9,7 @@ public class CreateArticleConsumer : IEventConsumer<CreateArticleEventModel>
 {
     private readonly IArticleConsumerRepository _articleConsumeRepository;
     private readonly ILogger<CreateArticleConsumer> _logger;
-    
+
     public CreateArticleConsumer(
         IArticleConsumerRepository articleConsumeRepository,
         ILogger<CreateArticleConsumer> logger)

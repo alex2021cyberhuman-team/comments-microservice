@@ -16,7 +16,7 @@ public class CommentWriteRepository : ICommentsWriteRepository
     public async Task CreateAsync(
         CommentDomainModel commentDomainModel)
     {
-        var dbModel = commentDomainModel.FromCommentDomainModel();
+        var dbModel = commentDomainModel.ToCommentDbModel();
         _context.Add(dbModel);
         await _context.SaveChangesAsync();
     }

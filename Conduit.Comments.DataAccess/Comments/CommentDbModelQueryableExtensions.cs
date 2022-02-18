@@ -19,12 +19,8 @@ public static class CommentDbModelQueryableExtensions
         Guid? userId,
         string articleSlug)
     {
-        return query
-            .AsSplitQuery()
-            .AsNoTracking()
-            .Include(x => x.Article)
-            .Include(x => x.Author)
-            .ThenInclude(x =>
+        return query.AsSplitQuery().AsNoTracking().Include(x => x.Article)
+            .Include(x => x.Author).ThenInclude(x =>
                 x.Followers.Where(y => userId != null && y.Id == userId));
     }
 

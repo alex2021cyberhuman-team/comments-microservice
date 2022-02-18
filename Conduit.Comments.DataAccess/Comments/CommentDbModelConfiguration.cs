@@ -22,7 +22,6 @@ public class
 
         builder.Navigation(x => x.Article).AutoInclude();
         builder.Navigation(x => x.Author).AutoInclude();
-        
     }
 
     public class DateTimeGenerator : ValueGenerator<DateTime>

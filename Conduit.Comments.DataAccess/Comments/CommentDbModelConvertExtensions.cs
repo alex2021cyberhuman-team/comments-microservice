@@ -40,7 +40,7 @@ public static class CommentDbModelConvertExtensions
         };
     }
 
-    public static CommentDbModel FromCommentDomainModel(
+    public static CommentDbModel ToCommentDbModel(
         this CommentDomainModel domainModel)
     {
         return new()
