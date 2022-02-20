@@ -11,7 +11,7 @@ public class
     {
         builder.HasKey(x => x.Id);
         builder.HasIndex(x => x.Slug).IsUnique();
-        builder.HasOne(x => x.Author).WithMany(x => x.Articles)
+        builder.HasOne(x => x.Author).WithMany()
             .OnDelete(DeleteBehavior.Cascade);
         builder.Property(x => x.Id).HasColumnName("article_id");
     }

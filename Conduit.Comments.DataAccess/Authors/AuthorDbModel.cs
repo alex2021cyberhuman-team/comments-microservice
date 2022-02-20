@@ -1,6 +1,4 @@
-﻿using Conduit.Comments.DataAccess.Articles;
-
-namespace Conduit.Comments.DataAccess.Authors;
+﻿namespace Conduit.Comments.DataAccess.Authors;
 
 public class AuthorDbModel
 {
@@ -15,8 +13,4 @@ public class AuthorDbModel
     public ICollection<AuthorDbModel> Followers { get; set; } = null!;
 
     public ICollection<AuthorDbModel> Followeds { get; set; } = null!;
-
-    public ICollection<ArticleDbModel> Favorites { get; set; } = null!;
-
-    public ICollection<ArticleDbModel> Articles { get; set; } = null!;
 }

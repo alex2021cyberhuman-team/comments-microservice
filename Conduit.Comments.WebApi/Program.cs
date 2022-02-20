@@ -5,6 +5,7 @@ using Conduit.Comments.BusinessLogic.Comments.Delete;
 using Conduit.Comments.BusinessLogic.Comments.GetMultiple;
 using Conduit.Comments.DataAccess;
 using Conduit.Comments.DataAccess.Articles;
+using Conduit.Comments.DataAccess.Authors;
 using Conduit.Comments.DataAccess.Comments;
 using Conduit.Comments.Domain.Articles;
 using Conduit.Comments.Domain.Authors;
@@ -67,7 +68,7 @@ services.AddJwtServices(configuration.GetSection("Jwt").Bind)
     .AddScoped<ICommentsGetMultipleHandler, CommentsGetMultipleHandler>()
     .AddScoped<IArticleConsumerRepository, ArticleConsumerRepository>()
     .AddScoped<IArticleReadRepository, ArticleReadRepository>()
-    .AddScoped<IAuthorConsumerRepository, IAuthorConsumerRepository>()
+    .AddScoped<IAuthorConsumerRepository, AuthorConsumerRepository>()
     .AddScoped<ICommentsReadRepository, CommentReadRepository>()
     .AddScoped<ICommentsWriteRepository, CommentWriteRepository>()
     .AddW3CLogging(configuration.GetSection("W3C").Bind).AddHttpClient()
