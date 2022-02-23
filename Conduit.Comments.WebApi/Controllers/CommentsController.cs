@@ -56,8 +56,7 @@ public class CommentsController : ControllerBase
     
     
     [HttpDelete("{commentId:guid}", Name = "deleteComment")]
-    [ProducesResponseType(typeof(SingleCommentOutputModel), (int)
-    HttpStatusCode.NoContent)]
+    [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
     [ProducesResponseType((int)HttpStatusCode.Forbidden)]

@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+using System.Linq.Expressions;
 using Conduit.Comments.DataAccess.Authors;
 using Conduit.Comments.Domain.Comments.Models;
 
@@ -11,7 +11,7 @@ public static class CommentDbModelConvertExtensions
         ConvertToCommentOutputModelExpression = dbModel => new()
         {
             Id = dbModel.Id,
-            Author =
+            Author = new()
             {
                 Bio = dbModel.Author.Bio,
                 Image = dbModel.Author.Image,

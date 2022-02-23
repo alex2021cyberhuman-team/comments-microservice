@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Models;
+using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Comments.Domain.Comments.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +19,7 @@ public class CommentReadRepository : ICommentsReadRepository
         CancellationToken cancellationToken)
     {
         var dbModel =
-            await _context.Comment.FindAsync(new object[] { commentId },
+            await _context.Comment.FirstOrDefaultAsync(x => x.Id == commentId,
                 cancellationToken);
         return dbModel?.ToCommentDomainModel();
     }

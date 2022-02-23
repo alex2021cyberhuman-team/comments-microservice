@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Create;
+using Conduit.Comments.Domain.Comments.Create;
 
 namespace Conduit.Comments.Domain.Comments.Models;
 
@@ -10,6 +10,7 @@ public static class CommentDomainModelExtensions
     {
         return new()
         {
+            Id = commentDomainModel.Id,
             CreatedAt = commentDomainModel.CreatedAt,
             UpdatedAt = commentDomainModel.UpdatedAt,
             Body = commentDomainModel.Body,
