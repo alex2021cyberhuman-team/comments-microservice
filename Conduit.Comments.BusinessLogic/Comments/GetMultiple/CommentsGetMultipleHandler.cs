@@ -1,5 +1,4 @@
-﻿using Conduit.Comments.Domain;
-using Conduit.Comments.Domain.Comments.GetMultiple;
+﻿using Conduit.Comments.Domain.Comments.GetMultiple;
 using Conduit.Comments.Domain.Comments.Repositories;
 
 namespace Conduit.Comments.BusinessLogic.Comments.GetMultiple;
@@ -21,11 +20,6 @@ public class CommentsGetMultipleHandler : ICommentsGetMultipleHandler
         var items =
             await _commentsReadRepository.GetMultipleAsync(request.ArticleSlug,
                 request.UserId, cancellationToken);
-        if (items.Any() == false)
-        {
-            return new(Error.NotFound);
-        }
-
         return new(items);
     }
 }

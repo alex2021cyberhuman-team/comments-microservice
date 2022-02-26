@@ -60,7 +60,9 @@ services.AddJwtServices(configuration.GetSection("Jwt").Bind)
         }
 
         optionsBuilder.UseSnakeCaseNamingConvention()
-            .UseNpgsql(configuration.GetConnectionString("Comments"));
+            .UseNpgsql(configuration.GetConnectionString("Comments"), 
+            contextOptionsBuilder => contextOptionsBuilder
+            .UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
     }).AddScoped<ICommentCreateHandler, CommentCreateHandler>()
     .AddScoped<ICommentCreateInputModelValidator,
         CommentCreateInputModelValidator>()
@@ -100,6 +102,9 @@ if (environment.IsDevelopment())
     IdentityModelEventSource.ShowPII = true;
 }
 
+app.UseRouting();
+app.UseCors(options =>
+    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseW3CLogging();
 app.UseAuthentication();
 app.UseAuthorization();
