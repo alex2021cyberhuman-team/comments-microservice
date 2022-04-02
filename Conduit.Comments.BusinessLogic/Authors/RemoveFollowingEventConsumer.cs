@@ -8,8 +8,8 @@ namespace Conduit.Comments.BusinessLogic.Authors;
 public class
     RemoveFollowingEventConsumer : IEventConsumer<RemoveFollowingEventModel>
 {
-    private readonly IAuthorConsumerRepository _repository;
     private readonly ILogger<RemoveFollowingEventConsumer> _logger;
+    private readonly IAuthorConsumerRepository _repository;
 
     public RemoveFollowingEventConsumer(
         IAuthorConsumerRepository repository,

@@ -7,8 +7,8 @@ namespace Conduit.Comments.BusinessLogic.Authors;
 
 public class RegisterUserEventConsumer : IEventConsumer<RegisterUserEventModel>
 {
-    private readonly IAuthorConsumerRepository _repository;
     private readonly ILogger<RegisterUserEventConsumer> _logger;
+    private readonly IAuthorConsumerRepository _repository;
 
     public RegisterUserEventConsumer(
         IAuthorConsumerRepository repository,

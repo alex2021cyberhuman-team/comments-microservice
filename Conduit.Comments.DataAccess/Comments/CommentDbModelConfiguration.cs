@@ -28,12 +28,12 @@ public class
     {
         public static DateTimeGenerator Instance { get; } = new();
 
+        public override bool GeneratesTemporaryValues { get; } = false;
+
         public override DateTime Next(
             EntityEntry entry)
         {
             return DateTime.UtcNow;
         }
-
-        public override bool GeneratesTemporaryValues { get; } = false;
     }
 }

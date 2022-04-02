@@ -11,12 +11,12 @@ namespace Conduit.Comments.BusinessLogic.Comments.Create;
 
 public class CommentCreateHandler : ICommentCreateHandler
 {
-    private readonly ICommentsWriteRepository _commentsWriteRepository;
+    private readonly IArticleReadRepository _articleReadRepository;
 
     private readonly ICommentCreateInputModelValidator
         _commentCreateInputModelValidator;
 
-    private readonly IArticleReadRepository _articleReadRepository;
+    private readonly ICommentsWriteRepository _commentsWriteRepository;
 
     private readonly IEventProducer<CreateCommentEventModel>
         _createCommentEventModelEventProducer;
@@ -67,7 +67,7 @@ public class CommentCreateHandler : ICommentCreateHandler
             articleDomainModel.Id, request.ArticleSlug);
 
         await _commentsWriteRepository.CreateAsync(domainModel);
-        var createCommentEventModel = new CreateCommentEventModel()
+        var createCommentEventModel = new CreateCommentEventModel
         {
             Id = domainModel.Id,
             Body = domainModel.Body,

@@ -5,8 +5,6 @@ namespace Conduit.Comments.Domain.Comments.Create;
 
 public class CommentCreateResponse : BaseResponse
 {
-    public Validation? Validation { get; set; }
-
     public CommentCreateResponse(
         Validation validation)
     {
@@ -29,6 +27,8 @@ public class CommentCreateResponse : BaseResponse
     {
         Output = new() { Comment = comment };
     }
+
+    public Validation? Validation { get; set; }
 
     public SingleCommentOutputModel Output { get; set; } = new();
 }

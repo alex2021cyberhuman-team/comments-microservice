@@ -24,6 +24,13 @@ public static class CommentDbModelConvertExtensions
         };
     }
 
+    /// <remarks>
+    ///     <c>Following</c> property will works only if <c>AuthorDbModel.Followers</c> is filtered with
+    ///     <c>Include</c>
+    /// </remarks>
+    public static Expression<Func<CommentDbModel, CommentOutputModel>>
+        ConvertToCommentOutputModelExpression { get; }
+
     public static CommentDomainModel ToCommentDomainModel(
         this CommentDbModel dbModel)
     {
@@ -53,10 +60,4 @@ public static class CommentDbModelConvertExtensions
             UpdatedAt = domainModel.UpdatedAt
         };
     }
-
-    /// <remarks>
-    ///     <c>Following</c> property will works only if <c>AuthorDbModel.Followers</c> is filtered with <c>Include</c>
-    /// </remarks>
-    public static Expression<Func<CommentDbModel, CommentOutputModel>>
-        ConvertToCommentOutputModelExpression { get; }
 }

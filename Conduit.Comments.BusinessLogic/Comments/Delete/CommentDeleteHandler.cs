@@ -12,8 +12,8 @@ namespace Conduit.Comments.BusinessLogic.Comments.Delete;
 public class CommentDeleteHandler : ICommentDeleteHandler
 {
     private readonly IArticleReadRepository _articleReadRepository;
-    private readonly ICommentsWriteRepository _commentsWriteRepository;
     private readonly ICommentsReadRepository _commentsReadRepository;
+    private readonly ICommentsWriteRepository _commentsWriteRepository;
 
     private readonly IEventProducer<DeleteCommentEventModel>
         _deleteCommentEventModelEventProducer;

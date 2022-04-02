@@ -16,7 +16,8 @@ namespace Conduit.Comments.WebApi.Controllers;
 public class CommentsController : ControllerBase
 {
     [HttpPost(Name = "createComment")]
-    [ProducesResponseType(typeof(SingleCommentOutputModel), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(SingleCommentOutputModel),
+        (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
@@ -33,12 +34,14 @@ public class CommentsController : ControllerBase
             ArticleSlug = articleSlug, AuthorId = authorId, Model = body
         };
         var response = await handler.HandleAsync(request, cancellationToken);
-        return GetActionResult(response.Output, response.Validation, response.Error);
+        return GetActionResult(response.Output, response.Validation,
+            response.Error);
     }
-    
-    
+
+
     [HttpGet(Name = "getMultipleComments")]
-    [ProducesResponseType(typeof(MultipleCommentsOutputModel), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(MultipleCommentsOutputModel),
+        (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> GetMultiple(
         [FromRoute] string articleSlug,
@@ -46,15 +49,15 @@ public class CommentsController : ControllerBase
         CancellationToken cancellationToken)
     {
         var userId = HttpContext.GetCurrentUserIdOptional();
-        var request = new CommentsGetMultipleRequest()
+        var request = new CommentsGetMultipleRequest
         {
             ArticleSlug = articleSlug, UserId = userId
         };
         var response = await handler.HandleAsync(request, cancellationToken);
         return GetActionResult(response.Output, null, response.Error);
     }
-    
-    
+
+
     [HttpDelete("{commentId:guid}", Name = "deleteComment")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -70,7 +73,9 @@ public class CommentsController : ControllerBase
         var authorId = HttpContext.GetCurrentUserId();
         var request = new CommentDeleteRequest
         {
-            ArticleSlug = articleSlug, AuthorId = authorId, CommentId = commentId
+            ArticleSlug = articleSlug,
+            AuthorId = authorId,
+            CommentId = commentId
         };
         var response = await handler.HandleAsync(request, cancellationToken);
         return GetActionResult(null, null, response.Error);
@@ -87,7 +92,7 @@ public class CommentsController : ControllerBase
             Error.BadRequest => validation.ToBadRequest(),
             Error.NotFound => NotFound(),
             Error.Forbidden => Forbid(),
-            _ => throw new ArgumentOutOfRangeException()
+            _ => throw new ArgumentOutOfRangeException(nameof(error))
         };
     }
 }

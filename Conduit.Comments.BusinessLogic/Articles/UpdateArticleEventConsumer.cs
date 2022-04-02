@@ -5,7 +5,8 @@ using Microsoft.Extensions.Logging;
 
 namespace Conduit.Comments.BusinessLogic.Articles;
 
-public class UpdateArticleEventConsumer : IEventConsumer<UpdateArticleEventModel>
+public class
+    UpdateArticleEventConsumer : IEventConsumer<UpdateArticleEventModel>
 {
     private readonly IArticleConsumerRepository _articleConsumeRepository;
     private readonly ILogger<UpdateArticleEventConsumer> _logger;

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Conduit.Comments.BusinessLogic.Articles;
 using Conduit.Comments.BusinessLogic.Authors;
 using Conduit.Comments.BusinessLogic.Comments.Create;
@@ -13,6 +14,7 @@ using Conduit.Comments.Domain.Comments.Create;
 using Conduit.Comments.Domain.Comments.Delete;
 using Conduit.Comments.Domain.Comments.GetMultiple;
 using Conduit.Comments.Domain.Comments.Repositories;
+using Conduit.Comments.WebApi;
 using Conduit.Shared.Events.Models.Articles.CreateArticle;
 using Conduit.Shared.Events.Models.Articles.DeleteArticle;
 using Conduit.Shared.Events.Models.Articles.UpdateArticle;
@@ -23,6 +25,7 @@ using Conduit.Shared.Events.Models.Profiles.RemoveFollowing;
 using Conduit.Shared.Events.Models.Users.Register;
 using Conduit.Shared.Events.Models.Users.Update;
 using Conduit.Shared.Events.Services.RabbitMQ;
+using Conduit.Shared.Localization;
 using Conduit.Shared.Startup;
 using Conduit.Shared.Tokens;
 using Conduit.Shared.Validation;
@@ -39,14 +42,13 @@ var configuration = builder.Configuration;
 
 var logging = builder.Logging;
 logging.ClearProviders();
-var serilogLogger = new LoggerConfiguration().ReadFrom.Configuration(configuration)
-    .CreateLogger();
+var serilogLogger = new LoggerConfiguration().ReadFrom
+    .Configuration(configuration).CreateLogger();
 logging.AddSerilog(serilogLogger);
 
 var services = builder.Services;
-
-services.AddControllers()
-    .RegisterValidateModelAttribute();
+var supportedCultures = new CultureInfo[] { new("ru"), new("en") };
+services.AddControllers().Localize<SharedResource>(supportedCultures);
 services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1",
@@ -54,18 +56,21 @@ services.AddSwaggerGen(c =>
 });
 
 services.AddJwtServices(configuration.GetSection("Jwt").Bind)
-    .AddDbContext<CommentsContext>(optionsBuilder =>
-    {
-        if (environment.IsDevelopment())
+    .DisableDefaultModelValidation().AddDbContext<CommentsContext>(
+        optionsBuilder =>
         {
-            optionsBuilder.EnableDetailedErrors().EnableSensitiveDataLogging();
-        }
+            if (environment.IsDevelopment())
+            {
+                optionsBuilder.EnableDetailedErrors()
+                    .EnableSensitiveDataLogging();
+            }
 
-        optionsBuilder.UseSnakeCaseNamingConvention()
-            .UseNpgsql(configuration.GetConnectionString("Comments"), 
-            contextOptionsBuilder => contextOptionsBuilder
-            .UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery));
-    }).AddScoped<ICommentCreateHandler, CommentCreateHandler>()
+            optionsBuilder.UseSnakeCaseNamingConvention().UseNpgsql(
+                configuration.GetConnectionString("Comments"),
+                contextOptionsBuilder => contextOptionsBuilder
+                    .UseQuerySplittingBehavior(
+                        QuerySplittingBehavior.SplitQuery));
+        }).AddScoped<ICommentCreateHandler, CommentCreateHandler>()
     .AddScoped<ICommentCreateInputModelValidator,
         CommentCreateInputModelValidator>()
     .AddScoped<ICommentDeleteHandler, CommentDeleteHandler>()
@@ -78,16 +83,21 @@ services.AddJwtServices(configuration.GetSection("Jwt").Bind)
     .AddW3CLogging(configuration.GetSection("W3C").Bind).AddHttpClient()
     .AddHttpContextAccessor()
     .RegisterRabbitMqWithHealthCheck(configuration.GetSection("RabbitMQ").Bind)
-    .AddHealthChecks()
-    .AddDbContextCheck<CommentsContext>()
-    .Services
-    .RegisterConsumer<RegisterUserEventModel, RegisterUserEventConsumer>(ConfigureConsumer)
-    .RegisterConsumer<UpdateUserEventModel, UpdateUserEventConsumer>(ConfigureConsumer)
-    .RegisterConsumer<CreateArticleEventModel, CreateArticleEventConsumer>(ConfigureConsumer)
-    .RegisterConsumer<UpdateArticleEventModel, UpdateArticleEventConsumer>(ConfigureConsumer)
-    .RegisterConsumer<DeleteArticleEventModel, DeleteArticleEventConsumer>(ConfigureConsumer)
-    .RegisterConsumer<CreateFollowingEventModel, CreateFollowingEventConsumer>(ConfigureConsumer)
-    .RegisterConsumer<RemoveFollowingEventModel, RemoveFollowingEventConsumer>(ConfigureConsumer)
+    .AddHealthChecks().AddDbContextCheck<CommentsContext>().Services
+    .RegisterConsumer<RegisterUserEventModel,
+        RegisterUserEventConsumer>(ConfigureConsumer)
+    .RegisterConsumer<UpdateUserEventModel,
+        UpdateUserEventConsumer>(ConfigureConsumer)
+    .RegisterConsumer<CreateArticleEventModel,
+        CreateArticleEventConsumer>(ConfigureConsumer)
+    .RegisterConsumer<UpdateArticleEventModel,
+        UpdateArticleEventConsumer>(ConfigureConsumer)
+    .RegisterConsumer<DeleteArticleEventModel,
+        DeleteArticleEventConsumer>(ConfigureConsumer)
+    .RegisterConsumer<CreateFollowingEventModel,
+        CreateFollowingEventConsumer>(ConfigureConsumer)
+    .RegisterConsumer<RemoveFollowingEventModel,
+        RemoveFollowingEventConsumer>(ConfigureConsumer)
     .RegisterProducer<CreateCommentEventModel>()
     .RegisterProducer<DeleteCommentEventModel>();
 
@@ -108,6 +118,7 @@ app.UseRouting();
 app.UseCors(options =>
     options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseW3CLogging();
+app.UseRequestLocalization();
 app.UseAuthentication();
 app.UseAuthorization();
 
