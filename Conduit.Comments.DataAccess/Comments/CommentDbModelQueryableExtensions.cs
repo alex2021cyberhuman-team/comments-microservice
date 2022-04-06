@@ -10,14 +10,13 @@ public static class CommentDbModelQueryableExtensions
         Guid? userId,
         string articleSlug)
     {
-        return query.IncludeInQuery(userId, articleSlug)
+        return query.IncludeInQuery(userId)
             .FilterQuery(articleSlug).ConvertQuery();
     }
 
     public static IQueryable<CommentDbModel> IncludeInQuery(
         this IQueryable<CommentDbModel> query,
-        Guid? userId,
-        string articleSlug)
+        Guid? userId)
     {
         return query.AsSplitQuery().AsNoTracking().Include(x => x.Article)
             .Include(x => x.Author).ThenInclude(x =>
