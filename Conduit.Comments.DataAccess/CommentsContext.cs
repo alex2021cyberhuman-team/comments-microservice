@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Conduit.Comments.DataAccess.Articles;
 using Conduit.Comments.DataAccess.Authors;
 using Conduit.Comments.DataAccess.Comments;

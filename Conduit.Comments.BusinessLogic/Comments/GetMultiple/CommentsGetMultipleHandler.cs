@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.GetMultiple;
+using Conduit.Comments.Domain.Comments.GetMultiple;
 using Conduit.Comments.Domain.Comments.Repositories;
 
 namespace Conduit.Comments.BusinessLogic.Comments.GetMultiple;

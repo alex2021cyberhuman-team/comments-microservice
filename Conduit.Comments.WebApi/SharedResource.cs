@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.WebApi;
+namespace Conduit.Comments.WebApi;
 
 public class SharedResource
 {

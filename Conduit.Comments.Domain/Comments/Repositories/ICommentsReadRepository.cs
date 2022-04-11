@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Models;
+using Conduit.Comments.Domain.Comments.Models;
 
 namespace Conduit.Comments.Domain.Comments.Repositories;
 

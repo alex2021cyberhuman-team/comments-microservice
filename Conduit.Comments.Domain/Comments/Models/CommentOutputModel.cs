@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using Conduit.Comments.Domain.Authors;
 
 namespace Conduit.Comments.Domain.Comments.Models;

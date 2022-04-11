@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain.Comments.Models;
+namespace Conduit.Comments.Domain.Comments.Models;
 
 public class SingleCommentOutputModel
 {

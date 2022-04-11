@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain.Articles;
+namespace Conduit.Comments.Domain.Articles;
 
 public class ArticleDomainModel
 {

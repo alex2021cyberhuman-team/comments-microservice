@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain.Comments.Create;
+namespace Conduit.Comments.Domain.Comments.Create;
 
 public interface ICommentCreateHandler
 {

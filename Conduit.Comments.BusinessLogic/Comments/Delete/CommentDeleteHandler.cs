@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain;
+using Conduit.Comments.Domain;
 using Conduit.Comments.Domain.Articles;
 using Conduit.Comments.Domain.Comments.Delete;
 using Conduit.Comments.Domain.Comments.Models;

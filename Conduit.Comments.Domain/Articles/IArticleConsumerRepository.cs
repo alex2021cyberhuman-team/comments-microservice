@@ -1,4 +1,4 @@
-﻿using Conduit.Shared.Events.Models.Articles.CreateArticle;
+using Conduit.Shared.Events.Models.Articles.CreateArticle;
 using Conduit.Shared.Events.Models.Articles.DeleteArticle;
 using Conduit.Shared.Events.Models.Articles.UpdateArticle;
 

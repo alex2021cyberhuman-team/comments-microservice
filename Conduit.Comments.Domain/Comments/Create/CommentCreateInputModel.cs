@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using Conduit.Shared.Validation;
 
 namespace Conduit.Comments.Domain.Comments.Create;

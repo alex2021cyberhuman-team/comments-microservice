@@ -29,7 +29,8 @@ public static class CommentDbModelConvertExtensions
     ///     <c>Include</c>
     /// </remarks>
     public static Expression<Func<CommentDbModel, CommentOutputModel>>
-        ConvertToCommentOutputModelExpression { get; }
+        ConvertToCommentOutputModelExpression
+    { get; }
 
     public static CommentDomainModel ToCommentDomainModel(
         this CommentDbModel dbModel)

@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain.Comments.GetMultiple;
+namespace Conduit.Comments.Domain.Comments.GetMultiple;
 
 public interface ICommentsGetMultipleHandler
 {

@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Authors;
+using Conduit.Comments.Domain.Authors;
 using Conduit.Shared.Events.Models.Users.Register;
 using Conduit.Shared.Events.Services;
 using Microsoft.Extensions.Logging;

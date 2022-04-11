@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.Domain.Comments.Delete;
+namespace Conduit.Comments.Domain.Comments.Delete;
 
 public interface ICommentDeleteHandler
 {

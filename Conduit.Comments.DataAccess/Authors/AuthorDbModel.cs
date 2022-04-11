@@ -1,4 +1,4 @@
-﻿namespace Conduit.Comments.DataAccess.Authors;
+namespace Conduit.Comments.DataAccess.Authors;
 
 public class AuthorDbModel
 {

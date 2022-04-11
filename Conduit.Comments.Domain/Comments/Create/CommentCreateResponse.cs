@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Comments.Models;
+using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Shared.Validation;
 
 namespace Conduit.Comments.Domain.Comments.Create;

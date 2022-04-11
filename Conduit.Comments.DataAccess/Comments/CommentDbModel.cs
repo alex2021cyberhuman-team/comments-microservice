@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.DataAccess.Articles;
+using Conduit.Comments.DataAccess.Articles;
 using Conduit.Comments.DataAccess.Authors;
 
 namespace Conduit.Comments.DataAccess.Comments;

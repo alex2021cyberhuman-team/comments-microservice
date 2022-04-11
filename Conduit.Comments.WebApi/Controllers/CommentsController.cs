@@ -31,7 +31,9 @@ public class CommentsController : ControllerBase
         var authorId = HttpContext.GetCurrentUserId();
         var request = new CommentCreateRequest
         {
-            ArticleSlug = articleSlug, AuthorId = authorId, Model = body
+            ArticleSlug = articleSlug,
+            AuthorId = authorId,
+            Model = body
         };
         var response = await handler.HandleAsync(request, cancellationToken);
         return GetActionResult(response.Output, response.Validation,
@@ -51,7 +53,8 @@ public class CommentsController : ControllerBase
         var userId = HttpContext.GetCurrentUserIdOptional();
         var request = new CommentsGetMultipleRequest
         {
-            ArticleSlug = articleSlug, UserId = userId
+            ArticleSlug = articleSlug,
+            UserId = userId
         };
         var response = await handler.HandleAsync(request, cancellationToken);
         return GetActionResult(response.Output, null, response.Error);

@@ -1,4 +1,4 @@
-﻿using Conduit.Comments.Domain.Articles;
+using Conduit.Comments.Domain.Articles;
 using Conduit.Shared.Events.Models.Articles.UpdateArticle;
 using Conduit.Shared.Events.Services;
 using Microsoft.Extensions.Logging;
