@@ -1,5 +1,5 @@
 using Conduit.Comments.Domain.Comments.Models;
-using Conduit.Shared.Validation;
+using Conduit.Shared.Validations;
 
 namespace Conduit.Comments.Domain.Comments.Create;
 

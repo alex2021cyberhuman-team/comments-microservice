@@ -5,7 +5,7 @@ using Conduit.Comments.Domain.Comments.Delete;
 using Conduit.Comments.Domain.Comments.GetMultiple;
 using Conduit.Comments.Domain.Comments.Models;
 using Conduit.Shared.AuthorizationExtensions;
-using Conduit.Shared.Validation;
+using Conduit.Shared.Validations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
