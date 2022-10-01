@@ -1,5 +1,5 @@
 using Conduit.Comments.Domain.Comments.Create;
-using Conduit.Shared.Validations;
+using Conduit.Shared.Validation;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
 
